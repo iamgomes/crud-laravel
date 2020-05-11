@@ -40,18 +40,7 @@
                     Comercial Laravel
                 </div>
                 <div class="links">
-                    <a href="">
-                        <i class="fa fa-file-text"> Documentação</i>
-                    </a>
-                    <a href="">
-                        <i class="fa fa-youtube-play"> Youtube</i>
-                    </a>
-                    <a href="">
-                        <i class="fa fa-github"> Github</i>
-                    </a>                   
-                    <a href="">
-                        <i class="fa fa-info"> Sobre</i>
-                    </a>
+                    <a href="{{route('product.index')}}" class="btn btn-primary" role="button">Painel</a>
                 </div>
             </div>
         </div>

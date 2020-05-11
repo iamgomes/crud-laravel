@@ -1,6 +1,6 @@
 @extends('templates.base')
 
-@section('title') Lista de Produtos @endsection
+@section('title') Lista de Cliente @endsection
 
 @section('content')
 
@@ -8,7 +8,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12" id="center"> 
-                    <h1><b>Produtos</b></h1>
+                    <h1><b>Clientes</b></h1>
                     <br>
                 </div>
             </div>
@@ -16,10 +16,10 @@
                 <div class="col-md-12">
                     <ol class="breadcrumb">
                         <li><a href="#">Painel</a></li>                  
-                        <li class="active">Produtos</li>
+                        <li class="active">Clientes</li>
                     </ol>
                     <br>
-                    <a href="{{route('product.create')}}" 
+                    <a href="{{route('cliente.create')}}" 
                     class="btn btn-default btn-sm pull-right">
                         <span class="glyphicon glyphicon-plus"></span> Adicionar</a>
                     <a href="" 
@@ -42,7 +42,7 @@
             <div class="row">
                 <div class="col-md-12">   
                     <br />
-                    <h4 id="center"><b>PRODUTOS CADASTRADOS ({{$total}})</b></h4>
+                    <h4 id="center"><b>CLIENTES CADASTRADOS ({{$total}})</b></h4>
                     <br>
                     <div class="table-responsive">
                         <table class="table table-hover">
@@ -50,33 +50,25 @@
                                 <tr>
                                     <th id="center">Código</th>
                                     <th>Nome</th>
-                                    <th>Descrição</th>
-                                    <th id="center">Quantidade</th>
-                                    <th>Preço</th>                
-                                    <th id="center">Imagem</th>                
+                                    <th>Email</th>
+                                    <th>Nascimento</th>                
                                     <th id="center">Ações</th>                
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($produtos as $produto)
+                                @foreach($clientes as $c)
                                 <tr>
-                                    <td id="center">{{$produto->id}}</td>
-                                    <td title="Nome">{{$produto->name}}</td>
-                                    <td title="Descrição">{{$produto->description}}</td>
-                                    <td title="Quantidade" id="center">{{$produto->quantity}}</td>
-                                    <td title="Preço">R$ {{number_format($produto->price, 2,',','.')}}</td> 
+                                    <td id="center">{{$c->id}}</td>
+                                    <td title="Nome">{{$c->nome}}</td>
+                                    <td title="Email">{{$c->email}}</td>
+                                    <td title="Nascimento">{{$c->nascimento}}</td>
                                     <td id="center">
-                                        <a href="{{URL::asset('produtos/'. '1' . $produto->imagem)}}" 
-                                        data-lightbox="{{URL::asset('produtos/'. '1' . $produto->imagem)}}">
-                                            <img src="{{URL::asset('produtos/'. $produto->imagem)}}" />
-                                        </a></td>
-                                    <td id="center">
-                                        <a href="{{route('product.edit', $produto->id)}}" 
+                                        <a href="{{route('cliente.edit', $c->id)}}" 
                                         data-toggle="tooltip" 
                                         data-placement="top"
                                         title="Alterar"><i class="fa fa-pencil"></i></a>
                                         &nbsp;<form style="display: inline-block;" method="POST" 
-                                                    action="{{route('product.destroy', $produto->id)}}"                                                        
+                                                    action="{{route('cliente.destroy', $c->id)}}"                                                        
                                                     data-toggle="tooltip" data-placement="top"
                                                     title="Excluir" 
                                                     onsubmit="return confirm('Confirma exclusão?')">
